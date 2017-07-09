@@ -6,6 +6,9 @@ public class Element : MonoBehaviour {
     public bool mine;
     public Button exit;
     public Button restart;
+    public Button Easy;
+    public Button Medium;
+    public Button Hard;
     public Text winText;
     public Sprite[] emptyTextures;
     public Sprite mineTexture;
@@ -23,7 +26,21 @@ public class Element : MonoBehaviour {
         });
         restart.onClick.AddListener(() =>
         {
-            Application.LoadLevel("scene1");
+            Application.LoadLevel(Application.loadedLevel);
+        });
+        Easy.onClick.AddListener(() => {
+            mine = Random.value < 0.15;
+            Application.LoadLevel(Application.loadedLevel);
+        });
+        Medium.onClick.AddListener(() => {
+            mine = Random.value < 0.20;
+            Application.LoadLevel(Application.loadedLevel);
+            
+        });
+        Hard.onClick.AddListener(() => {
+            mine = Random.value < 0.25;
+            Application.LoadLevel(Application.loadedLevel);
+            
         });
     }
     private void Update()
